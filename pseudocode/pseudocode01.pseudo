@@ -1,0 +1,68 @@
+Input:
+    Number of humans H
+    Number of robots R
+    Simulation time T
+    Task arrival probability p
+    Allocation policy π
+
+Output:
+    Throughput
+    Average Completion Time
+    Average Fatigue
+    Maximum Fatigue
+
+Initialize human agents with:
+    fatigue = 0
+    available_time = 0
+
+Initialize robot agents with:
+    available_time = 0
+
+Set completed_tasks = 0
+Set total_completion_time = 0
+
+FOR time t = 1 to T DO
+
+    FOR each human h DO
+        IF h.available_time ≤ t THEN
+            Apply fatigue recovery
+        ENDIF
+    ENDFOR
+
+    Generate random number u ∈ [0,1]
+
+    IF u < p THEN
+        Generate task with:
+            weight W
+            distance D
+
+        agent ← π(task, humans, robots, t)
+
+        IF agent exists THEN
+
+            IF agent is human THEN
+                duration ← D / human_speed
+                Update fatigue:
+                    F ← F + α * W * duration
+                Bound F to [0,1]
+            ELSE
+                duration ← D / robot_speed
+            ENDIF
+
+            agent.available_time ← t + duration
+            completed_tasks ← completed_tasks + 1
+            total_completion_time += duration
+
+        ENDIF
+    ENDIF
+
+ENDFOR
+
+Compute:
+    Throughput = completed_tasks / T
+    AvgCompletionTime = total_completion_time / completed_tasks
+    AvgFatigue = mean(human fatigue values)
+    MaxFatigue = max(human fatigue values)
+
+Return performance metrics
+

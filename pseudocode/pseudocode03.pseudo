@@ -1,0 +1,26 @@
+Input:
+    Policy set Π
+    Workload levels P
+    Number of runs N
+
+FOR each workload level p ∈ P DO
+
+    FOR each policy π ∈ Π DO
+
+        Initialize empty result list
+
+        FOR run = 1 to N DO
+            Set random seed = run
+            metrics ← RunSimulation(π, p)
+            Store metrics
+        ENDFOR
+
+        Compute mean and standard deviation
+        Store aggregated results
+
+    ENDFOR
+
+ENDFOR
+
+Export results to CSV
+
