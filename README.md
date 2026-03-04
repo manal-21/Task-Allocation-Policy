@@ -1,7 +1,7 @@
 # Task-Allocation-Policy
 Weight and fatigue aware task allocation framework simple simulation.
 
-**Weight–Fatigue Aware Task Allocation in Human–Robot Collaborative Warehouses**
+# Weight–Fatigue Aware Task Allocation in Human–Robot Collaborative Warehouses**
 # Project Overview
 This repository contains the simulation framework developed for the thesis:
 "Fatigue-Aware Task Allocation in Human–Robot Collaborative Warehouse Systems"
